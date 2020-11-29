@@ -7,7 +7,11 @@ class Cats:
         return fat_cat
 
     def get_old_cat(cat_list):
-        pass
+        old_cat = cat_list[0]
+        for cat in cat_list:
+            if old_cat.get_year() < cat.get_year():
+                old_cat = cat
+        return old_cat
 
     def get_from_old_cats_fat(cat_list):
         pass
