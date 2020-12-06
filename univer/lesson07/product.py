@@ -1,3 +1,10 @@
+from ua.python18_10_2020.univer.lesson07.currency import Currency
+
+class ProductException(Exception):
+    def __init__(self, message):
+        super.__init__(message)
+
+
 class Product:
     def __init__(self, name, weight, price):
         self.__name = name
@@ -6,12 +13,12 @@ class Product:
 
     @property
     def price(self):
-        return self.__price
+        return self.__price*Currency.usd*1.20
 
     @price.setter
     def price(self, value):
         if(value>0):
-            self.__price = value
+            self.__price = value/Currency.usd
         else:
             print("Error not valid value of price")
 
@@ -28,7 +35,7 @@ class Product:
         if value > 0:
             self.__weight = value
         else:
-            raise Exception("Error not valid value of weight")
+            raise ProductException("Error not valid value of weight")
 
     def __str__(self):
         return f"{self.name}, {self.weight}, {self.price}"
